@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Work Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      font-family: Work Sans;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 90%;
+      letter-spacing: -2px;
+      color: #272624;
+      max-width: 60%;
+      padding-top: 10vh;
+    }
+    p {
+      font-family: Work Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 83.4%;
+    }
+    button {
+      height: 30px;
+      width: 30px;
+      outline: none;
+      margin: 10px;
+    }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #EFE088 0%, #F9F9E0 100%), #C4C4C4;
+    }
+    .content {
+      padding: 100px;
+    }
+   .author {
+     position: absolute;
+     bottom: 50px;
+     right: 50px;
+   }
+    a {
+      font-weight: 800;
+      border-bottom: 2px solid #272624;
+      color: #272624;
+      text-decoration: none;
+    }
+    @-webkit-keyframes slideInUp {
+      from {
+        -webkit-transform: translate3d(0, 30px, 0);
+        transform: translate3d(0, 30px, 0);
+        visibility: visible;
+      }
+      to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        visibility: visible
+      }
+    }
+    @keyframes slideInUp {
+      from {
+        -webkit-transform: translate3d(0, 30px, 0);
+        transform: translate3d(0, 30px, 0);
+        visibility: visible;
+      }
+
+      to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        visibility: visible
+      }
+    }
+    @-webkit-keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .title {
+      animation: fadeIn 500ms, slideInUp 500ms;
+      -webkit-animation:  fadeIn 500ms, slideInUp 500ms;
+    }
+    .subtitle {
+      margin-top: 36px;
+      /*visibility: hidden;*/
+      /*animation: fadeIn 500ms, slideInUp 500ms;*/
+      /*-webkit-animation: fadeIn 500ms, slideInUp 500ms;*/
+      /*animation-delay: 1s;*/
+    }
+  </style>
+</head>
+<body>
+
+<div class="content">
+  <h1 id="js-header" class="title">"Professionals stick to the schedule, amateurs let life get in the way."</h1>
+<!--  <p class="subtitle">Do something you are supposed to be doing.</p>-->
+  <div class="author">James Clear, <a href="https://jamesclear.com/atomic-habits">Atomic Habits</a></div>
+</div>
+
+<script src="nono.js"></script>
+
+</body>
+</html>

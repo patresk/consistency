@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Work Sans', sans-serif;
+      color: #272624;
+    }
+    body {
+      padding: 50px;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #88D1BD 0%, #F9F9E0 100%), #C4C4C4;
+      font-size: 16px;
+    }
+    .content {
+      margin: 0 auto;
+      max-width: 600px;
+    }
+    input.website {
+      background-color: transparent;
+      font-size: 64px;
+      border: none;
+      outline: none;
+      margin: 12px 0;
+      letter-spacing: -2px;
+    }
+    input.website::placeholder {
+      opacity: 0.4;
+    }
+    button {
+      border: 0;
+      padding: 4px 10px;
+      background: none;
+      border: 1px solid #272624;
+      cursor: pointer;
+    }
+    .list {
+      padding: 0;
+      margin: 36px 0 12px 0;
+    }
+    .list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      margin: 0;
+      list-style-type: none;
+    }
+    .list li:first-child {
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    .list li button {
+      margin-left: 6px;
+    }
+    h2 {
+      font-size: 16px;
+      color: #272624;
+    }
+    @-webkit-keyframes slideInUp {
+      from {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0,5px, 0);
+        visibility: visible;
+      }
+
+      to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    @keyframes slideInUp {
+      from {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+        visibility: visible;
+      }
+
+      to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    @-webkit-keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+    .animated {
+      animation: fadeIn 500ms, slideInUp 500ms;
+      -webkit-animation:  fadeIn 500ms, slideInUp 500ms;
+    }
+  </style>
+</head>
+<body>
+
+<div class="content">
+  <p>Type in the website (for example, "facebook.com")  you want to block and press enter. Please note that all settings are stored in your computer.</p>
+  <input id="js-website" class="website" type="text" placeholder="Type here...">
+<!--  <p>-->
+<!--    <label><input type="checkbox">Daily limit: </label>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <button id="js-add">Add</button>-->
+<!--  </p>-->
+
+<!--  <h2>Already blocking</h2>-->
+  <ul id="js-list" class="list">
+  </ul>
+</div>
+
+</body>
+<script src="options.js"></script>
+</html>
