@@ -8,48 +8,37 @@
       margin: 0;
       padding: 0;
     }
-    h1 {
-      font-family: Work Sans;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 64px;
-      line-height: 90%;
-      letter-spacing: -2px;
-      color: #272624;
-      max-width: 60%;
-      padding-top: 10vh;
-    }
-    p {
-      font-family: Work Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 16px;
-      line-height: 83.4%;
-    }
-    button {
-      height: 30px;
-      width: 30px;
-      outline: none;
-      margin: 10px;
-    }
     body {
       min-height: 100vh;
-      background: linear-gradient(180deg, #EFE088 0%, #F9F9E0 100%), #C4C4C4;
+      background-image: linear-gradient(150deg, #D6D6D2 0%, #D1DDDA 100%);
     }
-    .content {
-      padding: 100px;
+    h1 {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 32px;
+      line-height: 150%;
+      letter-spacing: -1px;
+      color: white;
+      max-width: 400px;
+      margin: 0 auto;
+      padding-top: 35vh;
+      text-align: center;
+      animation: fadeIn 500ms, slideInUp 500ms;
+      -webkit-animation:  fadeIn 500ms, slideInUp 500ms;
     }
-   .author {
-     position: absolute;
-     bottom: 50px;
-     right: 50px;
-   }
+    .author {
+      color: white;
+      position: absolute;
+      bottom: 50px;
+      right: 50px;
+    }
     a {
       font-weight: 800;
-      border-bottom: 2px solid #272624;
-      color: #272624;
+      border-bottom: 2px solid white;
+      color: white;
       text-decoration: none;
     }
+
     @-webkit-keyframes slideInUp {
       from {
         -webkit-transform: translate3d(0, 30px, 0);
@@ -91,28 +80,11 @@
         opacity: 1;
       }
     }
-    .title {
-      animation: fadeIn 500ms, slideInUp 500ms;
-      -webkit-animation:  fadeIn 500ms, slideInUp 500ms;
-    }
-    .subtitle {
-      margin-top: 36px;
-      /*visibility: hidden;*/
-      /*animation: fadeIn 500ms, slideInUp 500ms;*/
-      /*-webkit-animation: fadeIn 500ms, slideInUp 500ms;*/
-      /*animation-delay: 1s;*/
-    }
   </style>
 </head>
 <body>
-
-<div class="content">
-  <h1 id="js-header" class="title">"Professionals stick to the schedule, amateurs let life get in the way."</h1>
-<!--  <p class="subtitle">Do something you are supposed to be doing.</p>-->
-  <div class="author">James Clear, <a href="https://jamesclear.com/atomic-habits">Atomic Habits</a></div>
-</div>
-
+<h1 id="js-header">Professionals stick to the schedule, amateurs let life get in the way.</h1>
+<div class="author">James Clear, <a href="https://jamesclear.com/atomic-habits">Atomic Habits</a></div>
 <script src="nono.js"></script>
-
 </body>
 </html>

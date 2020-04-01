@@ -37,7 +37,7 @@
     }
     .list {
       padding: 0;
-      margin: 36px 0 12px 0;
+      margin: 12px 0 12px 0;
     }
     .list li {
       padding: 12px 0;
@@ -101,6 +101,22 @@
       animation: fadeIn 500ms, slideInUp 500ms;
       -webkit-animation:  fadeIn 500ms, slideInUp 500ms;
     }
+    h5 {
+      text-transform: uppercase;
+      font-size: 11px;
+      opacity: 1;
+      margin-bottom: 0;
+      margin-top: 24px;
+    }
+    a {
+      cursor: pointer;
+      border-bottom: 2px solid #272624;
+      text-decoration: none;
+    }
+    small {
+      margin-left: 6px;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
@@ -115,11 +131,18 @@
 <!--    <button id="js-add">Add</button>-->
 <!--  </p>-->
 
-<!--  <h2>Already blocking</h2>-->
+  <h5>Blocked websites</h5>
   <ul id="js-list" class="list">
   </ul>
+
+  <br>
+  <h5>Active sessions</h5>
+  <ul id="sessions-list" class="list">
+  </ul>
+  <i>(All data are local in your computer. Click <a id="js-reset-statistics">here</a> to reset the statistics)</i></p>
 </div>
 
 </body>
+<script src="lib/moment.min.js"></script>
 <script src="options.js"></script>
 </html>

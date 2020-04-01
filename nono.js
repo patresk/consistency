@@ -5,4 +5,4 @@ const quotes = [
   "Habits are the compound interest of self-improvement"
 ]
 const quote = quotes[Math.floor(Math.random() * quotes.length)]
-document.getElementById('js-header').innerText = '"' + quote + '"'
+document.getElementById('js-header').innerText = quote
