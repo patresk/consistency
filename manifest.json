@@ -2,11 +2,7 @@
     "name": "Consistency",
     "version": "0.1",
     "description": "Consistency is a Chrome extension that helps you build your habits.",
-    "permissions": ["activeTab", "declarativeContent", "storage", "tabs"],
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
+    "permissions": ["storage"],
     "options_page": "options.html",
     "page_action": {
       "default_icon": {

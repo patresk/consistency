@@ -1,8 +1,8 @@
 /**
- * Format of blocked entity
+ * Format of a "blocked entity"
  * {
  *   match: string,
- *   dailyLimit: number, (in seconds)
+ *   blockCount: number,
  *   createdAt: number,
  * }
  */
@@ -10,40 +10,26 @@
 // Uncomment if you need to reset the list for some reason
 // chrome.storage.sync.set({list: []})
 
+const listHeaderElement = document.getElementById('js-list-header')
 const listElement = document.getElementById("js-list")
-const sessionsElement = document.getElementById('sessions-list')
 const textInput = document.getElementById('js-website');
-const resetButton = document.getElementById('js-reset-statistics')
 
-function renderSessions() {
-  chrome.storage.sync.get('sessions', function(data) {
-    const sessions = Object.entries(data.sessions || {})
-
-    while (sessionsElement.firstChild) {
-      sessionsElement.removeChild(sessionsElement.firstChild);
-    }
-
-    for (let [url, duration] of sessions.sort((a, b) => b[1] - a[1])) {
-      console.log(url, duration)
-      let li = document.createElement('li');
-      li.innerText = url
-      const durationSpan = document.createElement('span')
-      durationSpan.style.paddingLeft = '10px'
-      durationSpan.innerText = luxon.Duration.fromMillis(duration).as('seconds') + 's'
-      li.appendChild(durationSpan)
-      sessionsElement.appendChild(li);
-    }
-  })
+function toggleHeader(toggle) {
+  if (toggle) {
+    listHeaderElement.classList.remove('hidden')
+  } else {
+    listHeaderElement.classList.add('hidden')
+  }
 }
 
 function renderList() {
   chrome.storage.sync.get('list', function(data) {
     const list = data.list || []
-    console.log(list)
     list.sort((a, b) => b.createdAt - a.createdAt)
     while (listElement.firstChild) {
       listElement.removeChild(listElement.firstChild);
     }
+    toggleHeader(list.length > 0)
     for (let item of list) {
       let li = document.createElement('li');
       li.innerText = item.match
@@ -74,12 +60,14 @@ function addToList(item) {
   li.appendChild(removeBtn)
   li.classList.add('animated')
   listElement.insertBefore(li, listElement.firstChild)
+  toggleHeader(true)
 }
 
 function removeItem(itemToRemove) {
   chrome.storage.sync.get('list', function(data) {
     const list = data.list || []
     const updatedList = list.filter(item => item.id !== itemToRemove.id)
+    toggleHeader(updatedList.length > 0)
     chrome.storage.sync.set({list: updatedList}, function() {
       renderList()
     })
@@ -89,16 +77,20 @@ function removeItem(itemToRemove) {
 function addItem(item) {
   chrome.storage.sync.get('list', function(data) {
     const list = data.list || []
-    list.push(item)
-    chrome.storage.sync.set({list: list}, function() {
-      // renderList()
-      addToList(item)
-    })
+    const alreadyContains = list.find(i => i.match === item.match)
+    if (alreadyContains) {
+      alert("You've already blocked " + item.match)
+    } else {
+      list.push(item)
+      chrome.storage.sync.set({list: list}, function() {
+        addToList(item)
+      })
+    }
   })
 }
 
 textInput.addEventListener('keyup', function(e) {
-  if (e.keyCode === 13) {
+  if (e.keyCode === 13 && textInput.value.length > 0) {
     addItem({
       id: Date.now(),
       match: textInput.value,
@@ -109,13 +101,5 @@ textInput.addEventListener('keyup', function(e) {
   }
 })
 
-resetButton.addEventListener('click', function() {
-  if (confirm("Are you sure?")) {
-    chrome.storage.sync.set({ sessions: {} })
-    renderSessions()
-  }
-})
-
 renderList()
-renderSessions()
 textInput.focus()

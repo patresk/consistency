@@ -6,15 +6,19 @@
     * {
       font-family: 'Work Sans', sans-serif;
       color: #272624;
+      box-sizing: border-box;
     }
     body {
-      padding: 50px;
+      display: flex;
       min-height: 100vh;
       background: linear-gradient(180deg, #88D1BD 0%, #F9F9E0 100%), #C4C4C4;
       font-size: 16px;
     }
     .content {
-      margin: 0 auto;
+      margin: 64px auto 128px auto;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
       max-width: 600px;
     }
     input.website {
@@ -24,6 +28,8 @@
       outline: none;
       margin: 12px 0;
       letter-spacing: -2px;
+      animation: fadeIn 500ms, slideInUp 500ms;
+      -webkit-animation:  fadeIn 500ms, slideInUp 500ms;
     }
     input.website::placeholder {
       opacity: 0.4;
@@ -97,16 +103,12 @@
         opacity: 1;
       }
     }
-    .animated {
-      animation: fadeIn 500ms, slideInUp 500ms;
-      -webkit-animation:  fadeIn 500ms, slideInUp 500ms;
-    }
     h5 {
       text-transform: uppercase;
       font-size: 11px;
-      opacity: 1;
+      opacity: 0.7;
       margin-bottom: 0;
-      margin-top: 24px;
+      margin-top: 48px;
     }
     a {
       cursor: pointer;
@@ -117,29 +119,20 @@
       margin-left: 6px;
       font-size: 12px;
     }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
 <div class="content">
-  <p>Type in the website (for example, "facebook.com")  you want to block and press enter. Please note that all settings are stored in your computer.</p>
-  <input id="js-website" class="website" type="text" placeholder="Type here...">
-<!--  <p>-->
-<!--    <label><input type="checkbox">Daily limit: </label>-->
-<!--  </p>-->
-<!--  <p>-->
-<!--    <button id="js-add">Add</button>-->
-<!--  </p>-->
+  <input id="js-website" class="website" type="text" placeholder="Type a website...">
+<!--  <p>Type in the website (for example, "facebook.com")  you want to block and press enter. Please note that all settings are stored in your computer.</p>-->
 
-  <h5>Blocked websites</h5>
+  <h5 id="js-list-header" class="hidden">Blocked</h5>
   <ul id="js-list" class="list">
   </ul>
-
-  <br>
-  <h5>Active sessions</h5>
-  <ul id="sessions-list" class="list">
-  </ul>
-  <i>(All data are local in your computer. Click <a id="js-reset-statistics">here</a> to reset the statistics)</i></p>
 </div>
 
 </body>
