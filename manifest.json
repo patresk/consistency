@@ -28,6 +28,7 @@
     "web_accessible_resources": [
       "nono.html",
       "nono.js",
+      "images/logo.png",
       "lib/moment.min.js"
     ],
     "manifest_version": 2

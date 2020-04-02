@@ -122,12 +122,22 @@
     .hidden {
       display: none;
     }
+    .logo {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      opacity: 0.5;
+    }
   </style>
 </head>
 <body>
 
 <div class="content">
+  <img src="images/logo.png" class="logo">
   <input id="js-website" class="website" type="text" placeholder="Type a website...">
+
 <!--  <p>Type in the website (for example, "facebook.com")  you want to block and press enter. Please note that all settings are stored in your computer.</p>-->
 
   <h5 id="js-list-header" class="hidden">Blocked</h5>
