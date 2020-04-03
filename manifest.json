@@ -1,8 +1,8 @@
   {
     "name": "Consistency",
     "version": "0.1",
-    "description": "Consistency is a Chrome extension that helps you build your habits.",
     "permissions": ["storage"],
+    "description": "Consistency helps you to build your habits by blocking websites you don't want to visit.",
     "options_page": "options.html",
     "page_action": {
       "default_icon": {
