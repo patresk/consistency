@@ -1,6 +1,6 @@
-### Consistency
+# Consistency
 
-Consistency is a Chrome extension that helps you build your habits by blocking websites you don't want to visit.
+Consistency is a [Chrome extension](https://chrome.google.com/webstore/detail/consistency/lnlkeagaboibogkmlokbhmjhdglokgdn) that helps you build your habits by blocking websites you don't want to visit.
 
 ## How to build & use
 
