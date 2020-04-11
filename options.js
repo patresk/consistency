@@ -12,7 +12,9 @@
 
 const listHeaderElement = document.getElementById('js-list-header')
 const listElement = document.getElementById("js-list")
-const textInput = document.getElementById('js-website');
+const textInput = document.getElementById('js-website')
+
+const listItemTemplate = document.getElementById('template-list-item')
 
 function toggleHeader(toggle) {
   if (toggle) {
@@ -31,43 +33,21 @@ function renderList() {
     }
     toggleHeader(list.length > 0)
     for (let item of list) {
-      let li = document.createElement('li');
-      li.innerText = item.match
-      if (item.blockCount) {
-        let blockedEl = document.createElement('small')
-          blockedEl.innerText = '(' + item.blockCount + 'x blocked)'
-        li.appendChild(blockedEl)
-      }
-      const removeBtn = document.createElement('button')
-      removeBtn.innerText = 'Remove'
-      removeBtn.addEventListener("click", function() {
-        removeItem(item)
-      })
-      li.appendChild(removeBtn)
-      listElement.appendChild(li);
+      const el = listItemTemplate.content.cloneNode(true)
+      el.querySelector('.list-item_website').innerText = item.match
+      el.querySelector('.list-item_count').innerText = item.blockCount ? `${item.blockCount}x blocked` : ''
+      el.querySelector('.list-item_homepage').innerText = item.homepageOnly ? 'Only homepage' : `Whole domain`
+      el.querySelector('.list-item_homepage').addEventListener("click", () => { updateItem(item, !item.homepageOnly) })
+      el.querySelector('.list-item_button').addEventListener("click", () => { removeItem(item) })
+      listElement.appendChild(el);
     }
   })
-}
-
-function addToList(item) {
-  let li = document.createElement('li');
-  li.innerText = item.match
-  const removeBtn = document.createElement('button')
-  removeBtn.innerText = 'Remove'
-  removeBtn.addEventListener("click", function() {
-    removeItem(item)
-  })
-  li.appendChild(removeBtn)
-  li.classList.add('animated')
-  listElement.insertBefore(li, listElement.firstChild)
-  toggleHeader(true)
 }
 
 function removeItem(itemToRemove) {
   chrome.storage.sync.get('list', function(data) {
     const list = data.list || []
     const updatedList = list.filter(item => item.id !== itemToRemove.id)
-    toggleHeader(updatedList.length > 0)
     chrome.storage.sync.set({list: updatedList}, function() {
       renderList()
     })
@@ -83,10 +63,22 @@ function addItem(item) {
     } else {
       list.push(item)
       chrome.storage.sync.set({list: list}, function() {
-        addToList(item)
+        renderList()
       })
     }
   })
+}
+
+function updateItem(itemToUpdate, homepageOnly) {
+  chrome.storage.sync.get('list', function(data) {
+    const list = data.list || []
+    const itemInList = list.find(item => item.id === itemToUpdate.id)
+    itemInList.homepageOnly = homepageOnly
+    chrome.storage.sync.set({list: list}, function() {
+      renderList()
+    })
+  })
+
 }
 
 textInput.addEventListener('keyup', function(e) {
