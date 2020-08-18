@@ -37,7 +37,9 @@ function renderList() {
       el.querySelector('.list-item_website').innerText = item.match
       el.querySelector('.list-item_count').innerText = item.blockCount ? `${item.blockCount}x blocked` : ''
       el.querySelector('.list-item_homepage').innerText = item.homepageOnly ? 'Only homepage' : `Whole domain`
-      el.querySelector('.list-item_homepage').addEventListener("click", () => { updateItem(item, !item.homepageOnly) })
+      el.querySelector('.list-item_homepage').addEventListener("click", () => { updateItem(item, !item.homepageOnly, item.timer) })
+      el.querySelector('.list-item_timer').innerText = item.timer ? 'Wait 30s' : `Block`
+      el.querySelector('.list-item_timer').addEventListener("click", () => { updateItem(item, item.homepageOnly, !item.timer) })
       el.querySelector('.list-item_button').addEventListener("click", () => { removeItem(item) })
       listElement.appendChild(el);
     }
@@ -69,11 +71,12 @@ function addItem(item) {
   })
 }
 
-function updateItem(itemToUpdate, homepageOnly) {
+function updateItem(itemToUpdate, homepageOnly, timer) {
   chrome.storage.sync.get('list', function(data) {
     const list = data.list || []
     const itemInList = list.find(item => item.id === itemToUpdate.id)
     itemInList.homepageOnly = homepageOnly
+    itemInList.timer = timer
     chrome.storage.sync.set({list: list}, function() {
       renderList()
     })
@@ -87,7 +90,8 @@ textInput.addEventListener('keyup', function(e) {
       id: Date.now(),
       match: textInput.value,
       createdAt: Date.now(),
-      dailyLimit: 0
+      dailyLimit: 0,
+      timer: true,
     })
     textInput.value = ''
   }

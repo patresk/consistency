@@ -1,6 +1,6 @@
   {
     "name": "Consistency",
-    "version": "0.2",
+    "version": "0.3",
     "permissions": ["storage"],
     "description": "Consistency helps you to build your habits by blocking websites you don't want to visit.",
     "options_page": "options.html",
