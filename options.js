@@ -4,6 +4,8 @@
  *   match: string,
  *   blockCount: number,
  *   createdAt: number,
+ *   homepageOnly: boolean,
+ *   timer: boolean,
  * }
  */
 
@@ -39,6 +41,7 @@ function renderList() {
       el.querySelector('.list-item_homepage').innerText = item.homepageOnly ? 'Only homepage' : `Whole domain`
       el.querySelector('.list-item_homepage').addEventListener("click", () => { updateItem(item, !item.homepageOnly, item.timer) })
       el.querySelector('.list-item_timer').innerText = item.timer ? 'Wait 30s' : `Block`
+      el.querySelector('.list-item_timer').setAttribute('title', item.timer ? "After waiting, you will be allowed to access the page for 30 minutes" : '')
       el.querySelector('.list-item_timer').addEventListener("click", () => { updateItem(item, item.homepageOnly, !item.timer) })
       el.querySelector('.list-item_button').addEventListener("click", () => { removeItem(item) })
       listElement.appendChild(el);
@@ -90,7 +93,6 @@ textInput.addEventListener('keyup', function(e) {
       id: Date.now(),
       match: textInput.value,
       createdAt: Date.now(),
-      dailyLimit: 0,
       timer: true,
     })
     textInput.value = ''
