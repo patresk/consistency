@@ -6,6 +6,8 @@ Consistency is a simple and beautiful [Chrome extension](https://chrome.google.c
 
 ![screenshot 2](screen-2.png)
 
+![screenshot 3](screen-3.png)
+
 ## How to dev
 
 In Chrome Extensions list, enable developer mode, and use "Load unpacked" to load content of this repository.
