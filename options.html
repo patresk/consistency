@@ -63,16 +63,19 @@
       flex-grow: 1;
     }
     .list-item_count,
-    .list-item_homepage {
+    .list-item_homepage,
+    .list-item_timer {
       display: inline-block;
       padding: 4px 5px;
       margin-left: 3px;
       font-size: 12px;
     }
-    .list-item_homepage {
+    .list-item_homepage,
+    .list-item_timer {
       cursor: pointer;
     }
-    .list-item_homepage:hover {
+    .list-item_homepage:hover,
+    .list-item_timer:hover {
       background: rgba(0,0,0,0.05)
     }
     .list li button {
@@ -168,6 +171,7 @@
     <span class="list-item_website"></span>
     <small class="list-item_count"></small>
     <small class="list-item_homepage"></small>
+    <small class="list-item_timer"></small>
     <button class="list-item_button">Remove</button>
   </li>
 </template>

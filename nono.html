@@ -13,28 +13,49 @@
       display: flex;
       min-height: 100vh;
       background-image: linear-gradient(150deg, #D6D6D2 0%, #D1DDDA 100%);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .countdown {
+      display: inline-block;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.1);
+      padding: 30px;
+      font-weight: 300;
+      font-size: 32px;
+      color: white;
+      margin-bottom: 50px;
+      min-width: 40px;
+      align-self: center;
+    }
+    .countdown:empty {
+      display: none;
     }
     h1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 0 auto;
+      max-width: 500px;
       font-style: normal;
       font-weight: 300;
       font-size: 32px;
       line-height: 150%;
       letter-spacing: -1px;
       color: white;
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: center;
       animation: fadeIn 500ms, slideInUp 500ms;
       -webkit-animation:  fadeIn 500ms, slideInUp 500ms;
     }
     .author {
       color: white;
-      position: absolute;
-      bottom: 50px;
-      right: 50px;
+      margin-bottom: 50px;
+      margin-right: 50px;
+      align-self: flex-end;
     }
     a {
       font-weight: 800;
@@ -87,7 +108,10 @@
   </style>
 </head>
 <body>
-<h1 id="js-header">Professionals stick to the schedule, amateurs let life get in the way.</h1>
+<div class="container">
+  <div class="countdown" id="js-countdown"></div>
+  <h1 id="js-header">Professionals stick to the schedule, amateurs let life get in the way.</h1>
+</div>
 <div class="author">James Clear, <a href="https://jamesclear.com/atomic-habits">Atomic Habits</a></div>
 <script src="nono.js"></script>
 </body>

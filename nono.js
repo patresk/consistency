@@ -15,3 +15,20 @@ const quotes = [
 ]
 const quote = quotes[Math.floor(Math.random() * quotes.length)]
 document.getElementById('js-header').innerText = quote
+
+const url = new URL(window.location)
+
+function updateCounter() {
+  let secondsRemaining = Math.ceil((parseInt(url.searchParams.get('waitUntil'), 10) - Date.now()) / 1000)
+
+  if (secondsRemaining < 0) {
+    location.replace(url.searchParams.get('continueTo'))
+  } else {
+    document.getElementById('js-countdown').innerText = secondsRemaining
+  }
+}
+
+if (url.searchParams.get('waitUntil')) {
+  updateCounter()
+  setInterval(updateCounter, 1000)
+}
